@@ -20,23 +20,17 @@ class NiveauController extends Controller
     {
         
         $load= Niveau::all();
-        $value=$request->query('join');
+        // $value=$request->query('join');
         
-        if ($value=='classes') {
-            return Niveau::with($value)->get();
+        if ($this->test('Niveau', $request)!==false) {
+            return NiveauResource::collection(Niveau::all());
+            // return Niveau::with($value)->get();
             // return $load->load($value);
         }
-        else{
-            return NiveauResource::collection(Niveau::all());
-        }
+        // else{
+        //     return NiveauResource::collection(Niveau::all());
+        // }
 
-    }
-
-
-    public function find(Niveau $niveau)
-    {
-        $this->test();
-        return $niveau->load('classes');
     }
 
     /**
@@ -60,7 +54,8 @@ class NiveauController extends Controller
      */
     public function show(Niveau $niveau)
     {
-        //
+        return $niveau->load('classes');
+        
     }
 
     /**

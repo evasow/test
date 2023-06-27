@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('dateNaiss')->nullable();
             $table->string('LieuNaiss')->nullable();
             $table->string('sexe');
-            $table->boolean('Profile');
+            $table->boolean('profile');
             $table->timestamps();
         });
     }

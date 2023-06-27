@@ -5,8 +5,13 @@ namespace App\Traits;
 
 trait JoinQueryParams
 {
-    public function test()
+    public function test($classe, $request)
     {
-        dd('Bonjour');
+        $value=$request->query('join');
+        if ($value=='classes') {
+            # code...
+            return 'App\Model\'.$classe::with($value)->get();
+        }
+        return false;
     }
 }
