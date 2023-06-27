@@ -23,8 +23,8 @@ class NiveauController extends Controller
         $value=$request->query('join');
         
         if ($value=='classes') {
-            // return Niveau::with($value)->get();
-            return $load->load($value);
+            return Niveau::with($value)->get();
+            // return $load->load($value);
         }
         else{
             return NiveauResource::collection(Niveau::all());

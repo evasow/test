@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::resource('/niveaux', NiveauController::class);
+Route::resource('/niveaux', NiveauController::class);
 
-Route::get('/niveaux/{niveau}', [NiveauController::class, 'find']);
+// Route::get('/niveaux/{niveau}', [NiveauController::class, 'find']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
