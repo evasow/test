@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Classe extends Model
 {
     use HasFactory;
+
+    // protected $hidden = [
+    //     'created_at',
+    //     'updated_at',
+    //     'niveau_id'
+    // ];
 }

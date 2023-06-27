@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Niveau;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('libelle',50);
             $table->timestamps();
+        });
+        Schema::table('classes', function (Blueprint $table) {
+            $table->foreignIdFor(Niveau::class)->constrained()->cascadeOnDelete();
+            
         });
     }
 

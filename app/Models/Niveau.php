@@ -9,9 +9,9 @@ class Niveau extends Model
 {
     use HasFactory;
 
-
-    public function Niveau()
+    public function Classes()
     {
-        return $this->belongsTo(Niveau::class);
+        return $this->hasMany(Classe::class);
     }
+    
 }
