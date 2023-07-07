@@ -9,9 +9,19 @@ class Classe extends Model
 {
     use HasFactory;
 
-    // protected $hidden = [
-    //     'created_at',
-    //     'updated_at',
-    //     'niveau_id'
-    // ];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'niveau_id'
+    ];
+
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
+    public function disciplinesClasse()
+    {
+        return $this->hasMany(DiciplinesClasse::class);
+    }
+  
 }

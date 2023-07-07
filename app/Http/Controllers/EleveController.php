@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EleveRequest;
 use App\Models\Eleve;
-use Illuminate\Http\Request;
+use App\Models\Inscription;
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\EleveRequest;
+use Symfony\Component\HttpFoundation\Request;
 
 class EleveController extends Controller
 {
@@ -13,7 +16,8 @@ class EleveController extends Controller
      */
     public function index()
     {
-        //
+        // $test= new Eleve;
+        // return $test->numero();
     }
 
     /**
@@ -21,15 +25,38 @@ class EleveController extends Controller
      */
     public function store(EleveRequest $request)
     {
+        // $test= new Eleve;
+       
         $eleve = Eleve::firstOrCreate([
             "Nom" => $request->input("Nom"),
             "Prenom" => $request->input("Prenom"),
             "dateNaiss" => $request->input("dateNaiss"),
             "LieuNaiss" => $request->input("LieuNaiss"),
             "sexe"=>$request->input("sexe"),
-            "profile"=>$request->input("profile")
+            "profile"=>$request->input("profile"),
+            "etat"=>true,
+        ]);
+        
+        $lastInsertId=$eleve->id;
+
+        Inscription::firstOrCreate([
+           "eleve_id"=>$lastInsertId,
+           "classe_id"=> $request->input("classe_id"),
+           "dateInscription"=>Now(),
+           "annee_scolaire_id"=>1,
         ]);
         return $eleve;
+    }
+
+    public function sortieEleve(Request $request)
+    {
+        ["ids"=>$idEleves]=$request;
+        // dd($idEleves);
+        // Eleve::whereIn('id',$idEleves)->update(['etat'=>0]);
+        Eleve::sortie($idEleves,0);
+
+        return $idEleves;
+
     }
 
     /**

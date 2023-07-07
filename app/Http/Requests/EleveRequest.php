@@ -24,7 +24,7 @@ class EleveRequest extends FormRequest
         return [
             'Nom' => 'bail|required|between:4,250|alpha',
             'Prenom' => 'bail|required|between:4,250|alpha',
-            'dateNaiss' => 'bail|required|date|before:today',
+            'dateNaiss' => 'bail|required|date|before:today-4years',
             'LieuNaiss'=>'bail|required|max:250|alpha',
             'sexe'=>'bail|required|in:mas,fem',
             'profile'=>'bail|required|in:0,1'

@@ -9,6 +9,11 @@ class Niveau extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'updated_at',
+        'created_at',
+    ];
+
     public function Classes()
     {
         return $this->hasMany(Classe::class);

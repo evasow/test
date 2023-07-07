@@ -20,27 +20,18 @@ class NiveauController extends Controller
     {
         
         $load= Niveau::all();
-        // $value=$request->query('join');
+        $value=$request->query('join');
         
-        if ($this->test('Niveau', $request)!==false) {
-            return NiveauResource::collection(Niveau::all());
-            // return Niveau::with($value)->get();
+        if ($value=='classes') {
+            // $this->test();
+            return Niveau::with($value)->get();
             // return $load->load($value);
         }
-        // else{
-        //     return NiveauResource::collection(Niveau::all());
-        // }
+        else{
+            return NiveauResource::collection(Niveau::all());
+        }
 
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -48,24 +39,13 @@ class NiveauController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      */
     public function show(Niveau $niveau)
     {
         return $niveau->load('classes');
-        
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Niveau $niveau)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      */

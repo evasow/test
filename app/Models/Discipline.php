@@ -5,24 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Inscription extends Model
+class Discipline extends Model
 {
     use HasFactory;
 
     protected $guarded=[
         'id',
     ];
+
     protected $hidden = [
         'updated_at',
         'created_at',
     ];
 
-    public function eleve()
+    public function disciplinesClasse()
     {
-        return $this->belongsTo(Eleve::class);
-    }
-    public function classe()
-    {
-        return $this->belongsTo(Classe::class);
+        return $this->hasMany(DiciplinesClasse::class);
     }
 }
