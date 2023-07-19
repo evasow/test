@@ -19,18 +19,18 @@ class NiveauController extends Controller
     public function index(Request $request)
     {
         
-        $load= Niveau::all();
-        $value=$request->query('join');
-        
-        if ($value=='classes') {
-            // $this->test();
-            return Niveau::with($value)->get();
-            // return $load->load($value);
-        }
-        else{
-            return NiveauResource::collection(Niveau::all());
-        }
+        $niveau=new Niveau();
+        // $relations=$niveau->getRelations();
+        // return $relations;
+        $this->test($niveau , $request, ['classes','eleves','notes']);
+        // return;
+        // $classes = in_array('classes', $joins);
+        // $niveau=new Niveau();
+    //   if (!$this->test($niveau , $request, ['classes','eleves'])) {
 
+          return NiveauResource::collection(Niveau::all());
+
+    //   }
     }
     /**
      * Store a newly created resource in storage.

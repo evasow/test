@@ -15,11 +15,15 @@ class ClasseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            // 'classe_id'=>$this->id,
-            'classe'=>$this->libelle,
-            'NoteEvaldisciplines'=> DiciplineClasseResource::collection($this->disciplinesClasse),
-            
+            // 'eleves'=> InscriptionResource::collection($this->inscriptions),
+            // 'classe'=>$this->libelle,
+            // 'NoteEvaldisciplines'=> DiciplineClasseResource::collection($this-> disciplinesClasse),
+            // 'participants'=>ParticipantResource::collection($this->participants)
 
+            'classe'=>$this->libelle,
+            'eleves'=> InscriptionResource::collection($this->inscriptions),
+            'NoteEvaldisciplines'=> $this->whenLoaded('disciplinesClasse'),
+            'participants'=>$this->whenLoaded('participants'),
         ];
     }
 }

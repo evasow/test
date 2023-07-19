@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
        $this->call([
-        // NiveauSeeder::class,
-        // ClasseSeeder::class,
-        // DisciplineSeeder::class,
-        // EvaluationSeeder::class,
+        NiveauSeeder::class,
+        ClasseSeeder::class,
+        DisciplineSeeder::class,
+        EvaluationSeeder::class,
         SemestreSeeder::class,
        ]);
     }

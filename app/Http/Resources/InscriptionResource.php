@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DiciplineClasseResource extends JsonResource
+class InscriptionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +15,8 @@ class DiciplineClasseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'Discipline'=>$this->discipline->libelle,
-            'evaluation'=> $this->evaluation->libelle,
-            'noteMaximale'=>$this->noteMax,
+            'eleve'=>$this->eleve,
+            // 'note'=> NoteResource::collection($this->note),
         ];
     }
 }

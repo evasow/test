@@ -13,10 +13,10 @@ class ClasseSeeder extends Seeder
      */
     public function run(): void
     {
-        $classes = ['CI','CP','CE1','CE2','CM1','CM2'];
+        $classes = ['6eme','5eme','4eme','3eme'];
         
         
-        $primaire= Niveau::where('id',1)->first();
+        $primaire= Niveau::where('id',2)->first();
                
             foreach ($classes as $classe) {
                 DB::table("classes")->insert([

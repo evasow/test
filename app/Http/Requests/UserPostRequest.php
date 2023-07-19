@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EleveRequest extends FormRequest
+class UserPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,12 +22,9 @@ class EleveRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Nom' => 'bail|required|between:4,250|alpha',
-            'Prenom' => 'bail|required|between:4,250|string',
-            'dateNaiss' => 'bail|required|date|before:today-4years',
-            'LieuNaiss'=>'bail|required|max:250|string',
-            'sexe'=>'bail|required|in:mas,fem',
-            'profile'=>'bail|required|in:0,1'
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4|max:6|confirmed',
         ];
     }
 }

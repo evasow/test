@@ -5,13 +5,21 @@ namespace App\Traits;
 
 trait JoinQueryParams
 {
-    public function test($classe, $request)
+    public function test($model, $request, array $tabRelations)
     {
-        // $value=$request->query('join');
-        // if ($value=='classes') {
-        //     # code...
-        //     return $classe::with($value)->get();
-        // }
+        $join = $request->input('join');
+        $joins = explode(',', $join);
+
         
+
+        $params = [];
+
+        foreach ($joins as $join) {
+
+            if (in_array(trim($join), $tabRelations)) {
+                $params[] =trim($join);
+            }
+        }
+        echo $model::with($params)->get();
     }
 }

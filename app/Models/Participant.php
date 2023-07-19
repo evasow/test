@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Participant extends Model
 {
     use HasFactory;
 
@@ -16,12 +16,12 @@ class Note extends Model
         'updated_at',
         'created_at',
     ];
-    public function inscription()
+    public function event()
     {
-        return $this->belongsTo(Inscription::class);
+        return $this->belongsTo(Event::class);
     }
-    public function diciplines_classe()
+    public function classe()
     {
-        return $this->belongsTo(DiciplinesClasse::class);
+        return $this->belongsTo(Classe::class);
     }
 }

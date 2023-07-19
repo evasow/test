@@ -2,10 +2,10 @@
 
 namespace App\Jobs;
 
+use App\Models\Event;
 use App\Mail\SendMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -29,12 +29,13 @@ class SendMinuteEmails implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::to('recipient@gmail.com')->send(new SendMail());
-        $this->delay(1 * 60); // 1 minute
-
-        Event::listen('App\Events\SomeEvent', function () {
-            (new SendMinuteEmails)->dispatch();
-        });
-
+        // $users= Event::all();
+        // foreach ($users as $user) {
+        //     // Envoyer l'email à chaque utilisateur
+        //    $mail= $user->user()->get()[0]->email;
+        //     Mail::to($mail)->send(new SendMail());
+        // }
+        
+        // $this->delay(1 * 60); // 1 minute
     }
 }

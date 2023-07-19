@@ -21,6 +21,10 @@ class DiciplinesClasse extends Model
     {
         return $this->belongsTo(Evaluation::class);
     }
+    public function classe()
+    {
+        return $this->belongsTo(Classe::class);
+    }
 
 
 }

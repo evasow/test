@@ -18,5 +18,13 @@ class Niveau extends Model
     {
         return $this->hasMany(Classe::class);
     }
+    public function eleves()
+    {
+        return $this->belongsToMany(Eleve::class, 'inscriptions','classe_id','eleve_id');
+    }
+    public function notes()
+    {
+        return $this->belongsToMany(Note::class, 'inscriptions','classe_id','eleve_id');
+    }
     
 }

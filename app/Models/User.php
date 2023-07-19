@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -32,8 +33,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'updated_at',
+        'created_at',
     ];
-
+    
     /**
      * The attributes that should be cast.
      *
@@ -41,5 +44,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed'
     ];
+
+    public function event()
+    {
+        return  $this->hasMany(Event::class);
+    }
+  
 }

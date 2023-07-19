@@ -14,13 +14,18 @@ class Eleve extends Model
 
     public function __construct()
     {
-        $this->numero=$this->numero();
+        // $this->numero=$this->numero();
     //    echo json_encode($this->numero());
         // $this->numero();
     }
 
     protected $guarded=[
         'id'
+    ];
+    
+    protected $hidden = [
+        'updated_at',
+        'created_at',
     ];
 
     private function numero()

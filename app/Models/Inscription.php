@@ -25,4 +25,8 @@ class Inscription extends Model
     {
         return $this->belongsTo(Classe::class);
     }
+    public function note()
+    {
+        return $this->hasMany(Note::class);
+    }
 }
